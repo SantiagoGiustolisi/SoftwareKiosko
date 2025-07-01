@@ -1,0 +1,25 @@
+﻿@model ProyectoFinal_Santiago_Giustolisi.Models.Ingreso
+
+@{
+    ViewData["Title"] = "Delete";
+}
+<link href="~/css/Estilos.css" rel="stylesheet" />
+
+<h3>¿Esta seguro que quiere eliminar este Ingreso?</h3>
+<div>
+   <div class="contenedor-principal-detalles">
+     <h1 class="h1-create">Datos del ingreso a eliminar 👇 </h1>
+    <div class="contenedor-secundario-detalles">
+        <div class="c-s-1">
+            <p class="p-dato-detalles"> <b>● Nombre del Producto: </b>@Html.DisplayFor(model => model.stockProductos.Nombre)</p>
+            <p class="p-dato-detalles"> <b>● Cantidad del Producto: </b>@Html.DisplayFor(model => model.Cantidad)</p>
+            <p class="p-dato-detalles"> <b>● Fecha de Ingreso: </b>@Html.DisplayFor(model => model.fechaIngreso)</p>
+        </div>
+
+   
+</div>
+ <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Eliminar" class="btn btn-danger" /> 
+    </form>
+      <a asp-action="Index" style="border-radius: 1.5rem; background-color: yellow; color:black"><b>● Volver a la lista</b></a>

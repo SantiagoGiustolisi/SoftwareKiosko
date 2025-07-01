@@ -1,0 +1,29 @@
+﻿@model ProyectoFinal_Santiago_Giustolisi.Models.Ingreso
+
+@{
+    ViewData["Title"] = "Details";
+}
+<link href="~/css/Estilos.css" rel="stylesheet" />
+<div class="div-volver-create">
+    <a class="btn-volver-create" asp-action="Index">Volver</a>
+</div>
+
+<div class="contenedor-principal-detalles">
+    <h1 class="h1-create">Datos del Ingreso 👇</h1>
+    <div class="contenedor-secundario-detalles">
+        <div class="c-s-1">
+            <p class="p-dato-detalles"> <b>📌 Nombre del Producto: </b>@Html.DisplayFor(model => model.stockProductos.Nombre)</p>
+            <p class="p-dato-detalles"> <b>📌 Cantidad del Producto: </b>@Html.DisplayFor(model => model.Cantidad)</p>
+            <p class="p-dato-detalles"> <b>📌 Fecha de Ingreso: </b>@Html.DisplayFor(model => model.fechaIngreso)</p>
+        </div>
+    </div>
+    <div>
+<a asp-action="Edit" asp-route-id="@Model?.Id" style=" margin: 10px;
+    padding: 6px;
+    background-color: #16a085;
+    border-radius: 1rem;
+    text-decoration: none;
+    color: #fff;
+    transition: all .4s;">Editar</a> 
+</div>
+

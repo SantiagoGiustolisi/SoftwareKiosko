@@ -1,0 +1,50 @@
+﻿@model ProyectoFinal.Models.Pedido
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<link href="~/css/Estilos.css" rel="stylesheet" />
+<div class="div-volver-create">
+    <a class="btn-volver-create" asp-action="Index">Volver</a>
+</div>
+<div class="contenedor-principal-create">
+    <h1 class="h1-create">Editar Pedido</h1>
+    <div class="contenedor-secundario-create">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Descripcion" class="control-label"><b>✔️  Descripción</b></label>
+                <input asp-for="Descripcion" class="form-control" />
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProveedorId" class="control-label"><b>✔️  Proveedor</b></label>
+                <select asp-for="ProveedorId" class ="form-control" asp-items="ViewBag.ProveedorId"></select>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="Costo" class="control-label"><b>✔️  Costo</b></label>
+                <input asp-for="Costo" class="form-control" />
+                <span asp-validation-for="Costo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaIngreso" class="control-label"><b>✔️  Fecha de Ingreso</b></label>
+                <input asp-for="FechaIngreso" class="form-control" />
+                <span asp-validation-for="FechaIngreso" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+

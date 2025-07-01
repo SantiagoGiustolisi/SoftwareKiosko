@@ -1,0 +1,52 @@
+﻿@model ProyectoFinal_Santiago_Giustolisi.Models.Deudor
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<link href="~/css/Estilos.css" rel="stylesheet" />
+<div class="div-volver-create">
+    <a class="btn-volver-create" asp-action="Index">Volver</a>
+</div>
+<div class="contenedor-principal-create">
+    <h1 class="h1-create">Editar Deudor</h1>
+    <div class="contenedor-secundario-create">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"><b>✔️  Nombre del Deudor</b></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="fechaVenta" class="control-label"><b>✔️  Fecha de Venta</b></label>
+                <input asp-for="fechaVenta" class="form-control" />
+                <span asp-validation-for="fechaVenta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descripcion" class="control-label"><b>✔️  Descripción</b></label>
+                <input asp-for="Descripcion" class="form-control" />
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="dineroEntregado" class="control-label"><b>✔️   Dinero Entregado </b></label>
+                <input asp-for="dineroEntregado" class="form-control" />
+                <span asp-validation-for="dineroEntregado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="dineroTotal" class="control-label"><b>✔️  Dinero Total</b></label>
+                <input asp-for="dineroTotal" class="form-control" />
+                <span asp-validation-for="dineroTotal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,44 @@
+﻿@model ProyectoFinal_Santiago_Giustolisi.Models.Ingreso
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<link href="~/css/Estilos.css" rel="stylesheet" />
+    <div class="div-volver-create">
+        <a class="btn-volver-create" asp-action="Index">Volver</a>
+    </div>
+
+    <div class="contenedor-principal-create">
+        <h1>Crea un nuevo Ingreso 👇</h1>
+         <div class="contenedor-secundario-create">
+        <h4>Datos a completar para generar un Ingreso</h4>
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="productoId" class="control-label"><b>⭐ Nombre del producto</b></label>
+               <select asp-for="productoId" class="form-control" asp-items="ViewBag.Productos"></select>
+                <span asp-validation-for="productoId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cantidad" class="control-label"><b>⭐ Cantidad de unidades</b></label>
+                <input asp-for="Cantidad" class="form-control" />
+                <span asp-validation-for="Cantidad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="fechaIngreso" class="control-label"><b>⭐ Fecha de Ingreso</b></label>
+                <input asp-for="fechaIngreso" class="form-control" />
+                <span asp-validation-for="fechaIngreso" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Crear" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

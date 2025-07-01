@@ -1,0 +1,37 @@
+﻿@model ProyectoFinal_Santiago_Giustolisi.Models.Categoria
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<link href="~/css/Estilos.css" rel="stylesheet" />
+    <div class="div-volver-create">
+        <a class="btn-volver-create" asp-action="Index">Volver</a>
+    </div>
+
+    <div class="contenedor-principal-create">
+        <h1>Crea un nueva Categoria👇</h1>
+         <div class="contenedor-secundario-create">
+        <h4>Datos a completar para generar una Categoria</h4>
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NombreCategoria" class="control-label"><b>⭐ Nombre de la Categoria </b></label>
+                <input asp-for="NombreCategoria" class="form-control" />
+                <span asp-validation-for="NombreCategoria" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Crear" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+

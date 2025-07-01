@@ -1,0 +1,29 @@
+﻿@model ProyectoFinal_Santiago_Giustolisi.Models.Proveedor
+
+@{
+    ViewData["Title"] = "Details";
+}
+<link href="~/css/Estilos.css" rel="stylesheet" />
+<div class="div-volver-create">
+    <a class="btn-volver-create" asp-action="Index">Volver</a>
+</div>
+
+<div class="contenedor-principal-detalles">
+    <h1 class="h1-create">Datos del Proveedor 👇</h1>
+    <div class="contenedor-secundario-detalles">
+        <div class="c-s-1">
+            <p class="p-dato-detalles"> <b>📌 Nombre del Proveedor: </b>@Html.DisplayFor(model => model.NombreProveedor)</p>
+            <p class="p-dato-detalles"> <b>📌 Teléfono del Proveedor: </b>@Html.DisplayFor(model => model.Telefono)</p>
+        </div>
+        </div>
+        <div>
+   <a asp-action="Edit" asp-route-id="@Model?.Id" style=" margin: 10px;
+    padding: 6px;
+    background-color: #16a085;
+    border-radius: 1rem;
+    text-decoration: none;
+    color: #fff;
+    transition: all .4s;">Editar</a> 
+      
+</div>
+    </div>

@@ -1,0 +1,50 @@
+﻿@model ProyectoFinal_Santiago_Giustolisi.Models.Proveedor
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<link href="~/css/Estilos.css" rel="stylesheet" />
+    <div class="div-volver-create">
+        <a class="btn-volver-create" asp-action="Index">Volver</a>
+    </div>
+
+    <div class="contenedor-principal-create">
+        <h1>Crea un nuevo Proveedor 👇</h1>
+         <div class="contenedor-secundario-create">
+        <h4>Datos a completar para generar un Proveedor</h4>
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NombreProveedor" class="control-label"><b>⭐ Nombre del proveedor</b></label>
+                <input asp-for="NombreProveedor" class="form-control" />
+                <span asp-validation-for="NombreProveedor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Telefono" class="control-label"><b>⭐ Telefono del proveedor</b></label>
+                <input asp-for="Telefono" class="form-control" />
+                <span asp-validation-for="Telefono" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Crear" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+   <form asp-action="Importar" enctype="multipart/form-data">
+    <div class="form-group">
+        <label class="control-label">👇  Si desea importar proveedores desde un archivo, seleccione dicho archivo y haga click en el boton importar</label>
+        <input asp-for="NombreProveedor" type="file" id="import">
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Importar" class="btn btn-primary" />
+    </div>
+</form>
+</div>
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

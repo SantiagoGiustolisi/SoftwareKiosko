@@ -1,0 +1,20 @@
+﻿@model ProyectoFinal_Santiago_Giustolisi.Models.Categoria
+
+@{
+    ViewData["Title"] = "Delete";
+}
+<link href="~/css/Estilos.css" rel="stylesheet" />
+<h3>¿Está seguro que quiere eliminar esta Categoria?</h3>
+
+<div class="contenedor-principal-detalles">
+    <h1 class="h1-create">Datos de la Categoria a eliminar 👇 </h1>
+    <div class="contenedor-secundario-detalles">
+        <div class="c-s-1">
+            <p class="p-dato-detalles"> <b>● Nombre de la Categoria: </b>@Html.DisplayFor(model => model.NombreCategoria)</p>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Eliminar" class="btn btn-danger" /> 
+    </form>
+     <a asp-action="Index" style="border-radius: 1.5rem; background-color: yellow; color:black"><b>● Volver a la lista</b></a>
+</div>

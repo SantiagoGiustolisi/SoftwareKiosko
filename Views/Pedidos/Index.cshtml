@@ -1,0 +1,77 @@
+﻿@model IEnumerable<ProyectoFinal.Models.Pedido>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<link href="~/css/Estilos.css" rel="stylesheet" />
+<h1 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 3rem;
+            font-weight: bold;
+            text-align: center;
+            color: #2C3E50;
+            margin-bottom: 30px;
+            text-transform: capitalize;
+            letter-spacing: 1px;
+            padding: 15px;
+            background-color: #ECF0F1;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border: 2px solid #BDC3C7;
+            transition: all 0.3s ease;">Gestión de Pedidos 📦</h1>
+
+<p>
+    <a class="btn-principal" asp-action="Create"> Agrega un nuevo Pedido 👈🏽</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <p style="margin:0; padding:0; font-family: 'Chewy', cursive;">Descripción del Pedido</p>
+            </th>
+             <th>
+                <p style="margin:0; padding:0; font-family: 'Chewy', cursive;">Proveedor del Pedido</p>
+            </th>
+             <th>
+                <p style="margin:0; padding:0; font-family: 'Chewy', cursive;">Costo del Pedido</p>
+            </th>
+             <th>
+                <p style="margin:0; padding:0; font-family: 'Chewy', cursive;">Fecha de Ingreso del Pedido</p>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+                <tr>
+                    <td>
+                      ​*️⃣​  @Html.DisplayFor(modelItem => item.Descripcion)
+                    </td>
+                    <td>
+                       ​*️⃣​ @Html.DisplayFor(modelItem => item.Proveedor.NombreProveedor)
+                    </td>
+                        <td>
+                       ​*️⃣​ @Html.DisplayFor(modelItem => item.Costo)
+                        </td>
+                            <td>
+                       ​*️⃣​ @Html.DisplayFor(modelItem => item.FechaIngreso)
+                        </td>
+                        <td class="fila-tabla">
+                                <a class="btn-editar" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                                <a class="btn-detalles" asp-action="Details" asp-route-id="@item.Id">Detalles</a>
+                                <a class="btn-eliminar" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                            </td>
+                </tr>
+        }
+        @if (TempData["Success"] != null)
+        {
+        <div class="alert-success" id="alert-success">
+            <pre>@TempData["Success"]</pre>
+            <button type="button" class="close-alert" onclick="document.getElementById('alert-success').style.display='none'">&times;</button>
+        </div>
+        }
+
+    </tbody>
+</table>
+

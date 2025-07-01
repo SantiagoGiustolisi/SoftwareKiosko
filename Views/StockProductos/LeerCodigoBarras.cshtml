@@ -1,0 +1,99 @@
+﻿<div class="contenedor-lector">
+    <h2>Leer Código de Barras</h2>
+
+    <form asp-action="LeerCodigoBarras" method="post" enctype="multipart/form-data" class="formulario-codigo">
+        <div>
+            <label for="imagen">Seleccione la imagen con el código de barras:</label><br />
+            <input type="file" name="imagen" id="imagen" accept="image/*" />
+        </div>
+        <button type="submit">Leer Código</button>
+    </form>
+
+    @if (!ViewData.ModelState.IsValid)
+    {
+            <div class="errores-codigo">
+            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+            {
+                        <p>@error.ErrorMessage</p>
+            }
+            </div>
+    }
+
+    @if (ViewBag.CodigoLeido != null)
+    {
+            <div class="resultado-codigo">
+                <strong>Código leído:</strong>
+                <p>@ViewBag.CodigoLeido</p>
+            </div>
+    }
+</div>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .contenedor-lector {
+        max-width: 600px;
+        margin: 40px auto;
+        padding: 30px;
+        background-color: #f9f9f9;
+        border: 2px solid #ddd;
+        border-radius: 15px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    .contenedor-lector h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .formulario-codigo label {
+        font-weight: bold;
+        color: #555;
+    }
+
+    .formulario-codigo input[type="file"] {
+        width: 100%;
+        padding: 8px;
+        margin-top: 10px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+    }
+
+    .formulario-codigo button {
+        display: block;
+        width: 100%;
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s;
+    }
+
+    .formulario-codigo button:hover {
+        background-color: #45a049;
+    }
+
+    .resultado-codigo, .errores-codigo {
+        margin-top: 25px;
+        padding: 15px;
+        border-radius: 10px;
+    }
+
+    .resultado-codigo {
+        background-color: #e6ffed;
+        color: #2d6a4f;
+        border: 1px solid #95d5b2;
+    }
+
+    .errores-codigo {
+        background-color: #ffe6e6;
+        color: #990000;
+        border: 1px solid #ffcccc;
+    }
+</style>

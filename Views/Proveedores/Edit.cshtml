@@ -1,0 +1,39 @@
+﻿@model ProyectoFinal_Santiago_Giustolisi.Models.Proveedor
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<link href="~/css/Estilos.css" rel="stylesheet" />
+<div class="div-volver-create">
+    <a class="btn-volver-create" asp-action="Index">Volver</a>
+</div>
+<div class="contenedor-principal-create">
+    <h1 class="h1-create">Editar Proveedor</h1>
+    <div class="contenedor-secundario-create">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="NombreProveedor" class="control-label"><b>✔️  Nombre del Proveedor</b></label>
+                <input asp-for="NombreProveedor" class="form-control" />
+                <span asp-validation-for="NombreProveedor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Telefono" class="control-label">✔️  Teléfono del Proveedor</b></label>
+                <input asp-for="Telefono" class="form-control" />
+                <span asp-validation-for="Telefono" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+

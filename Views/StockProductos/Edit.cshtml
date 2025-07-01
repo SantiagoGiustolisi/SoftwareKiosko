@@ -1,0 +1,57 @@
+﻿@model ProyectoFinal_Santiago_Giustolisi.Models.StockProducto
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<link href="~/css/Estilos.css" rel="stylesheet" />
+<div class="div-volver-create">
+    <a class="btn-volver-create" asp-action="Index">Volver</a>
+</div>
+<div class="contenedor-principal-create">
+    <h1 class="h1-create">Editar Producto</h1>
+    <div class="contenedor-secundario-create">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"><b>✔️  Nombre del Producto</b></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+             <div class="form-group">
+                <label asp-for="categoriaId" class="control-label"><b>✔️  Categoria</b></label>
+                <select asp-for="categoriaId" class="form-control" asp-items="ViewBag.categoriaId"></select>
+                <span asp-validation-for="categoriaId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cantidad" class="control-label"><b>✔️  Cantidad</b></label>
+                <input asp-for="Cantidad" class="form-control" />
+                <span asp-validation-for="Cantidad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Precio" class="control-label"><b>✔️  Precio por Unidad</b></label>
+                <input asp-for="Precio" class="form-control" />
+                <span asp-validation-for="Precio" class="text-danger"></span>
+            </div>
+            <div>
+                <input type="hidden" asp-for="Foto" id="fotoHidden" />
+                <img src="~/images/productos/@Model.Foto" style="max-width:100px; max-heigth:100px; border-radius:10px; margin:8px 37%" id="imagen" class="img-thumbnail"
+                     display=@(!string.IsNullOrEmpty(@Model.Foto) ? "none" : "block") asp-append-version="true" />
+                <br />
+                <label class="control-label"><b>● Ingrese nueva foto</b></label>
+                <input asp-for="Foto" type="file" id="foto">
+            </div>
+            <div class="contenedor-btn-create">
+                <input class="btn-create" type="submit" value="Guardar" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

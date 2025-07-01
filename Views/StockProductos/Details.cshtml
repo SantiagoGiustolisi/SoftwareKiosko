@@ -1,0 +1,37 @@
+﻿@model ProyectoFinal_Santiago_Giustolisi.Models.StockProducto
+
+@{
+    ViewData["Title"] = "Details";
+}
+<link href="~/css/Estilos.css" rel="stylesheet" />
+<div class="contenedor-principal-detalles">
+    <h1 class="h1-create">Datos del Producto 👇</h1>
+    <div class="contenedor-secundario-detalles">
+        <div class="c-s-1">
+            <p class="p-dato-detalles"> <b>● Nombre del Producto: </b>@Html.DisplayFor(model => model.Nombre)</p>
+            <p class="p-dato-detalles"> <b>● Categoria: </b>@Html.DisplayFor(model => model.categoria.NombreCategoria)</p>
+            <p class="p-dato-detalles"> <b>● Cantidad: </b>@Html.DisplayFor(model => model.Cantidad)</p>
+            <p class="p-dato-detalles"> <b>● Precio por Unidad: $</b>@Html.DisplayFor(model => model.Precio)</p>
+        </div>
+        <div class="c-s-2">
+            <p class="p-foto-detalles"><b> Foto: </b></p>
+            @if (!string.IsNullOrEmpty(@Model.Foto))
+            {
+                            <img class="foto-detalles" src="~/images/productos/@Model.Foto" asp-append-version="true" />
+            }
+        </div>
+    </div>
+    <div>
+    <h3>Código de barras</h3>
+    <img src='@Url.Action("CodigoBarras", "StockProductos", new { id = Model.Id })' alt="Código de Barras" />
+    <a asp-action="LeerCodigoBarras" class="btn btn-primary">Leer Código de Barras</a> <h6>Para lograr realizar la lectura del códido de barras debe de guardar la imagen y luego realizar el scaner</h6>
+ 
+</div>
+
+    <div>
+        <a  class="btn-editar" asp-action="Edit" asp-route-id="@Model?.Id">Editar</a>
+    </div>
+    <div>
+    <a asp-action="Index" style="border-radius: 1.5rem; background-color: yellow; color:black"><b>● Volver a la lista</b></a>
+</div>
+</div>

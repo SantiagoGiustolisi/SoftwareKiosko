@@ -1,0 +1,107 @@
+﻿@model IEnumerable<ProyectoFinal_Santiago_Giustolisi.Models.Deudor>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<link href="~/css/Estilos.css" rel="stylesheet" />
+<h1 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 3rem;
+            font-weight: bold;
+            text-align: center;
+            color: #2C3E50;
+            margin-bottom: 30px;
+            text-transform: capitalize;
+            letter-spacing: 1px;
+            padding: 15px;
+            background-color: #ECF0F1;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border: 2px solid #BDC3C7;
+            transition: all 0.3s ease;">Gestión de Deudores 📞</h1>
+
+<p>
+    <a class="btn-principal" asp-action="Create">👉​Agregar un nuevo Deudor/a 👈🏽</a>
+</p>
+@{
+    var deudaPagadaMessage = TempData["DeudaPagadaMessage"] as string;
+}
+
+@if (!string.IsNullOrEmpty(deudaPagadaMessage))
+{
+        <script>
+            alert('@deudaPagadaMessage');
+        </script>
+}
+    
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <p style="margin:0; padding:0; font-family: 'Chewy', cursive;">Cliente Deudor</p>
+            </th>
+            <th>
+                <p style="margin:0; padding:0; font-family: 'Chewy', cursive;">Fecha de Venta</p>
+            </th>
+            <th>
+                 <p style="margin:0; padding:0; font-family: 'Chewy', cursive;">Descripción</p>
+            </th>
+            <th>
+                <p style="margin:0; padding:0; font-family: 'Chewy', cursive;"> Dinero Entregado</p>
+            </th>
+            <th>
+                <p style="margin:0; padding:0; font-family: 'Chewy', cursive;">Dinero Total</p>
+            </th>
+            <th>
+                <p style="margin:0; padding:0; color:red; font-family: 'Chewy', cursive;">Deuda</p>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+                <tr>
+                    <td>
+                        ​*️⃣​ @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                       ​*️⃣​ @Html.DisplayFor(modelItem => item.fechaVenta)
+                    </td>
+                    <td>
+                       ​*️⃣​ @Html.DisplayFor(modelItem => item.Descripcion)
+                    </td>
+                    <td>
+                       ​*️⃣​ @Html.DisplayFor(modelItem => item.dineroEntregado)
+                    </td>
+                    <td>
+                       ​*️⃣​ @Html.DisplayFor(modelItem => item.dineroTotal)
+                    </td>
+                    <td>
+                    @if (item.dineroResto < 0)
+                    {
+                                    <p style="color:red; margin:0; padding:0;">$@Html.DisplayFor(modelItem => item.dineroResto)</p>
+                    }
+                    else
+                    {
+                                    <p style="color:green; margin:0; padding:0;">$@Html.DisplayFor(modelItem => item.dineroResto)</p>
+                    }
+                    </td>
+                       <td class="fila-tabla">
+                                <a class="btn-editar" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                                <a class="btn-detalles" asp-action="Details" asp-route-id="@item.Id">Detalles</a>
+                                <a class="btn-eliminar" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                            </td>
+                </tr>
+        }
+        @if (TempData["DeudaPagadaMessage"] != null)
+        {
+        <div class="alert-deuda" id="alert-deuda">
+            <strong>@TempData["DeudaPagadaMessage"]</strong>
+            <button type="button" class="close-alert" onclick="document.getElementById('alert-deuda').style.display='none'">✖</button>
+        </div>
+        }
+
+
+    </tbody>
+</table>
+

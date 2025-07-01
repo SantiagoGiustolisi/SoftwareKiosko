@@ -1,0 +1,63 @@
+﻿@model ProyectoFinal_Santiago_Giustolisi.Models.Venta
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<link href="~/css/Estilos.css" rel="stylesheet" />
+<div class="div-volver-create">
+    <a class="btn-volver-create" asp-action="Index">Volver</a>
+</div>
+
+<div class="contenedor-principal-create">
+    <h1>Crea una nueva Venta 👇</h1>
+        <div class="contenedor-secundario-create">
+            <h4>Datos a completar para generar una Venta</h4>
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+          
+            <div class="form-group">
+                <label asp-for="productoId" class="control-label">⭐ Nombre del Producto</label>
+                <select asp-for="productoId" class="form-control" asp-items="ViewBag.Producto"></select>
+                <span asp-validation-for="productoId" class="text-danger"></span>
+            </div>
+
+            <!-- Resto de los campos de la venta -->
+            <div class="form-group">
+                <label asp-for="Cantidad" class="control-label">⭐ Cantidad</label>
+                <input asp-for="Cantidad" class="form-control" />
+                <span asp-validation-for="Cantidad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="precioIngreso" class="control-label">⭐ Precio de Ingreso</label>
+                <input asp-for="precioIngreso" class="form-control" />
+                <span asp-validation-for="precioIngreso" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="precioEgreso" class="control-label">⭐ Precio de Egreso</label>
+                <input asp-for="precioEgreso" class="form-control" />
+                <span asp-validation-for="precioEgreso" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cliente" class="control-label">⭐ Cliente</label>
+                <input asp-for="Cliente" class="form-control" />
+                <span asp-validation-for="Cliente" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="fechaVenta" class="control-label">⭐ Fecha de Venta</label>
+                <input asp-for="fechaVenta" class="form-control" />
+                <span asp-validation-for="fechaVenta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Crear" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

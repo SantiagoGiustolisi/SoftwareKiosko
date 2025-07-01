@@ -1,0 +1,82 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+/* General navbar styles */
+.navbar-nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-right: 20px;
+    list-style: none;
+}
+
+    .navbar-nav .nav-item {
+        position: relative;
+    }
+
+    .navbar-nav .nav-link {
+        font-family: 'Segoe UI', sans-serif;
+        font-size: 16px;
+        padding: 10px 15px;
+        border-radius: 8px;
+        text-decoration: none;
+        color: #ffffff;
+        background-color: #0077cc;
+        transition: all 0.3s ease;
+    }
+
+        .navbar-nav .nav-link:hover {
+            background-color: #005fa3;
+            color: #ffffff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+    .navbar-nav .btn-link {
+        border: none;
+        background: none;
+        color: #ffffff;
+        padding: 10px 15px;
+        cursor: pointer;
+        border-radius: 8px;
+        background-color: #e63946;
+        transition: all 0.3s ease;
+    }
+
+        .navbar-nav .btn-link:hover {
+            background-color: #c62828;
+            color: #ffffff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+    /* Text for logged user */
+    .navbar-nav .nav-link[title="Manage"] {
+        background-color: transparent;
+        color: #0077cc;
+        font-weight: bold;
+        cursor: default;
+    }
+
+        .navbar-nav .nav-link[title="Manage"]:hover {
+            background-color: transparent;
+            box-shadow: none;
+            color: #005fa3;
+        }

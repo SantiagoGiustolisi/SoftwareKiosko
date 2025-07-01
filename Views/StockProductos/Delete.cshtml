@@ -1,0 +1,32 @@
+﻿@model ProyectoFinal_Santiago_Giustolisi.Models.StockProducto
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<link href="~/css/Estilos.css" rel="stylesheet" />
+<div class="div-volver-create">
+    <a class="btn-volver-create" asp-action="Index">Volver</a>
+</div>
+<div class="contenedor-principal-detalles">
+    <h1 class="h1-create">Datos del Producto a eliminar 👇</h1>
+    <div class="contenedor-secundario-detalles">
+        <div class="c-s-1">
+            <p class="p-dato-detalles"> <b>● Nombre del Producto: </b>@Html.DisplayFor(model => model.Nombre)</p>
+            <p class="p-dato-detalles"> <b>● Nombre del Producto: </b>@Html.DisplayFor(model => model.Nombre)</p>
+            <p class="p-dato-detalles"> <b>● Cantidad: </b>@Html.DisplayFor(model => model.Cantidad)</p>
+            <p class="p-dato-detalles"> <b>● Precio por Unidad: </b>@Html.DisplayFor(model => model.Precio)</p>
+        </div>
+        <div class="c-s-2">
+            <p class="p-foto-detalles"><b> Foto: </b></p>
+            @if (!string.IsNullOrEmpty(@Model.Foto))
+            {
+                        <img class="foto-detalles" src="~/images/productos/@Model.Foto" asp-append-version="true" />
+            }
+        </div>
+    </div>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Eliminar" class="btn btn-danger" />
+    </form>
+</div>

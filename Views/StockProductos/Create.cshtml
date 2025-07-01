@@ -1,0 +1,58 @@
+﻿@model ProyectoFinal_Santiago_Giustolisi.Models.StockProducto
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<link href="~/css/Estilos.css" rel="stylesheet" />
+    <div class="div-volver-create">
+        <a class="btn-volver-create" asp-action="Index">Volver</a>
+    </div>
+
+    <div class="contenedor-principal-create">
+        <h1>Crea un nuevo Producto 👇</h1>
+         <div class="contenedor-secundario-create">
+        <h4>Datos a completar para generar un Producto</h4>
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"><b>⭐ Nombre del Producto</b></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="categoriaId" class="control-label"><b>⭐ Categoria</b></label>
+                <select asp-for="categoriaId" class ="form-control" asp-items="ViewBag.categoriaId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cantidad" class="control-label"><b>⭐ Cantidad</b></label>
+                <input asp-for="Cantidad" class="form-control" />
+                <span asp-validation-for="Cantidad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Precio" class="control-label"><b>⭐ Precio por Unidad</b></label>
+                <input asp-for="Precio" class="form-control" />
+                <span asp-validation-for="Precio" class="text-danger"></span>
+            </div>
+           <div class="contenedor-imagen-create">
+                <img src="" id="imagen" style="max-width:100px; max-heigth:100px; border-radius:10px; margin:8px 37%" asp-append-version="true" />
+                <br />
+                <label class="control-label"><b>● Ingrese una foto del Producto</b></label>
+                <input asp-for="Foto" type="file" id="foto" accept="image/jpeg" class="img-thumbnail">
+            </div>
+            <div class="contenedor-btn-create">
+                <input class="btn-create" type="submit" value="Crear" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="~/js//preview.js"></script>
