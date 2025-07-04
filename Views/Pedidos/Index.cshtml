@@ -29,13 +29,13 @@
             <th>
                 <p style="margin:0; padding:0; font-family: 'Chewy', cursive;">Descripción del Pedido</p>
             </th>
-             <th>
+            <th>
                 <p style="margin:0; padding:0; font-family: 'Chewy', cursive;">Proveedor del Pedido</p>
             </th>
-             <th>
+            <th>
                 <p style="margin:0; padding:0; font-family: 'Chewy', cursive;">Costo del Pedido</p>
             </th>
-             <th>
+            <th>
                 <p style="margin:0; padding:0; font-family: 'Chewy', cursive;">Fecha de Ingreso del Pedido</p>
             </th>
             <th></th>
@@ -46,32 +46,48 @@
         {
                 <tr>
                     <td>
-                      ​*️⃣​  @Html.DisplayFor(modelItem => item.Descripcion)
+                        <input type="checkbox" class="pedido-checkbox" data-descripcion="@item.Descripcion" />
                     </td>
                     <td>
-                       ​*️⃣​ @Html.DisplayFor(modelItem => item.Proveedor.NombreProveedor)
+                        *️⃣ @Html.DisplayFor(modelItem => item.Descripcion)
                     </td>
-                        <td>
-                       ​*️⃣​ @Html.DisplayFor(modelItem => item.Costo)
-                        </td>
-                            <td>
-                       ​*️⃣​ @Html.DisplayFor(modelItem => item.FechaIngreso)
-                        </td>
-                        <td class="fila-tabla">
-                                <a class="btn-editar" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
-                                <a class="btn-detalles" asp-action="Details" asp-route-id="@item.Id">Detalles</a>
-                                <a class="btn-eliminar" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
-                            </td>
+                    <td>
+                        *️⃣ @Html.DisplayFor(modelItem => item.Proveedor.NombreProveedor)
+                    </td>
+                    <td>
+                        *️⃣ @Html.DisplayFor(modelItem => item.Costo)
+                    </td>
+                    <td>
+                        *️⃣ @Html.DisplayFor(modelItem => item.FechaIngreso)
+                    </td>
+                    <td class="fila-tabla">
+                        <a class="btn-editar" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                        <a class="btn-detalles" asp-action="Details" asp-route-id="@item.Id">Detalles</a>
+                        <a class="btn-eliminar" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                    </td>
                 </tr>
         }
         @if (TempData["Success"] != null)
         {
-        <div class="alert-success" id="alert-success">
-            <pre>@TempData["Success"]</pre>
-            <button type="button" class="close-alert" onclick="document.getElementById('alert-success').style.display='none'">&times;</button>
-        </div>
+                <div class="alert-success" id="alert-success">
+                    <pre>@TempData["Success"]</pre>
+                    <button type="button" class="close-alert" onclick="document.getElementById('alert-success').style.display='none'">&times;</button>
+                </div>
         }
-
     </tbody>
 </table>
 
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const checkboxes = document.querySelectorAll('.pedido-checkbox');
+
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function () {
+                if (this.checked) {
+                    const descripcion = this.getAttribute('data-descripcion');
+                    alert(`✅ Pedido Completado: ${descripcion}`);
+                }
+            });
+        });
+    });
+</script>
