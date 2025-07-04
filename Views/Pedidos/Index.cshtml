@@ -27,6 +27,9 @@
     <thead>
         <tr>
             <th>
+                <p style="margin:0; padding:0; font-family: 'Chewy', cursive;">✔️</p>
+            </th>
+            <th>
                 <p style="margin:0; padding:0; font-family: 'Chewy', cursive;">Descripción del Pedido</p>
             </th>
             <th>
@@ -44,35 +47,35 @@
     <tbody>
         @foreach (var item in Model)
         {
-                <tr>
-                    <td>
-                        <input type="checkbox" class="pedido-checkbox" data-descripcion="@item.Descripcion" />
-                    </td>
-                    <td>
-                        *️⃣ @Html.DisplayFor(modelItem => item.Descripcion)
-                    </td>
-                    <td>
-                        *️⃣ @Html.DisplayFor(modelItem => item.Proveedor.NombreProveedor)
-                    </td>
-                    <td>
-                        *️⃣ @Html.DisplayFor(modelItem => item.Costo)
-                    </td>
-                    <td>
-                        *️⃣ @Html.DisplayFor(modelItem => item.FechaIngreso)
-                    </td>
-                    <td class="fila-tabla">
-                        <a class="btn-editar" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
-                        <a class="btn-detalles" asp-action="Details" asp-route-id="@item.Id">Detalles</a>
-                        <a class="btn-eliminar" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
-                    </td>
-                </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" class="pedido-checkbox" data-descripcion="@item.Descripcion" />
+                </td>
+                <td>
+                    *️⃣ @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                <td>
+                    *️⃣ @Html.DisplayFor(modelItem => item.Proveedor.NombreProveedor)
+                </td>
+                <td>
+                    *️⃣ @Html.DisplayFor(modelItem => item.Costo)
+                </td>
+                <td>
+                    *️⃣ @Html.DisplayFor(modelItem => item.FechaIngreso)
+                </td>
+                <td class="fila-tabla">
+                    <a class="btn-editar" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                    <a class="btn-detalles" asp-action="Details" asp-route-id="@item.Id">Detalles</a>
+                    <a class="btn-eliminar" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                </td>
+            </tr>
         }
         @if (TempData["Success"] != null)
         {
-                <div class="alert-success" id="alert-success">
-                    <pre>@TempData["Success"]</pre>
-                    <button type="button" class="close-alert" onclick="document.getElementById('alert-success').style.display='none'">&times;</button>
-                </div>
+            <div class="alert-success" id="alert-success">
+                <pre>@TempData["Success"]</pre>
+                <button type="button" class="close-alert" onclick="document.getElementById('alert-success').style.display='none'">&times;</button>
+            </div>
         }
     </tbody>
 </table>

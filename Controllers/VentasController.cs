@@ -194,6 +194,19 @@ namespace ProyectoFinal_Santiago_Giustolisi.Controllers
             return View(venta);
         }
 
+        public IActionResult GenerarTicket(int id)
+        {
+            var venta = _context.Venta
+                        .Include(v => v.stockProductos)
+                        .FirstOrDefault(v => v.Id == id);
+
+            if (venta == null)
+                return NotFound();
+
+            return View(venta);
+        }
+
+
         // GET: Ventas/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -234,6 +247,7 @@ namespace ProyectoFinal_Santiago_Giustolisi.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
 
         private bool VentaExists(int id)
         {

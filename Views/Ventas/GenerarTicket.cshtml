@@ -1,0 +1,83 @@
+﻿@model ProyectoFinal_Santiago_Giustolisi.Models.Venta
+
+@{
+    ViewData["Title"] = "Ticket de Venta";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"]</title>
+    <style>
+        /* ===== Estilos para el ticket ===== */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f7f9fc;
+            margin: 40px auto;
+            color: #34495e;
+            max-width: 480px;
+            padding: 30px 25px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: 700;
+            color: #2980b9;
+            letter-spacing: 1px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin: 8px 0;
+            border-bottom: 1px dotted #ccc;
+            padding-bottom: 6px;
+        }
+
+        p strong {
+            width: 140px;
+            display: inline-block;
+            color: #2c3e50;
+        }
+
+        hr {
+            margin: 30px 0;
+            border: none;
+            border-top: 2px solid #2980b9;
+            opacity: 0.4;
+        }
+
+        button {
+            display: block;
+            margin: 30px auto 0 auto;
+            padding: 10px 25px;
+            font-size: 1rem;
+            background-color: #27ae60;
+            border: none;
+            border-radius: 6px;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #219150;
+        }
+
+    </style>
+</head>
+<body>
+    <h2>Ticket de Venta</h2>
+
+    <p><strong>Producto:</strong> @Model.stockProductos.Nombre</p>
+    <p><strong>Cantidad:</strong> @Model.Cantidad</p>
+    <p><strong>Cliente:</strong> @Model.Cliente</p>
+    <p><strong>Fecha de Venta:</strong> @Model.fechaVenta.ToString("dd/MM/yyyy")</p>
+
+    <hr />
+
+    <button onclick="window.print()">Imprimir Ticket</button>
+</body>
+</html>

@@ -48,11 +48,13 @@
                     <td class="fila-tabla">$@Html.DisplayFor(modelItem => item.Margen)</td>
                     <td class="fila-tabla">*️⃣ @Html.DisplayFor(modelItem => item.Cliente)</td>
                     <td class="fila-tabla">*️⃣ @Html.DisplayFor(modelItem => item.fechaVenta)</td>
-                    <td class="fila-tabla">
-                        <a class="btn-editar" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
-                        <a class="btn-detalles" asp-action="Details" asp-route-id="@item.Id">Detalles</a>
-                        <a class="btn-eliminar" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
-                    </td>
+                       <td class="fila-tabla">
+        <a class="btn-editar" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+        <a class="btn-detalles" asp-action="Details" asp-route-id="@item.Id">Detalles</a>
+        <a class="btn-eliminar" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+        <a class="btn-ticket" asp-action="GenerarTicket" asp-route-id="@item.Id">Generar Ticket</a>
+    </td>
+
                 </tr>
         }
         @if (TempData["Success"] != null)
